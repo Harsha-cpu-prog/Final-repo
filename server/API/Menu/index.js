@@ -3,13 +3,13 @@ import express from "express";
 import passport from "passport";
 
 // Database modal
-import { MenuModel, ImageModel } from "../../database/allModels";
+import { MenuModel  } from "../../database/allModels";
 
 const Router = express.Router();
 
 /*
 Route     /list
-Des       Get all list menu based on id
+Des       Get all list  menu based on id
 Params    _id
 Access    Public
 Method    GET  
