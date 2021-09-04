@@ -6,13 +6,13 @@ import passport from "passport";
 import { FoodModel } from "../../database/allModels";
 
 // Validation
-// import { ValidateRestaurantId, Validatecategory } from "../../validation/food";
+import { ValidateRestaurantId, Validatecategory } from "../../validation/food";
 
 const Router = express.Router();
 
 /*
 Route     /r
-Des       Get all food based on particular restaurant
+Des       Get all food based on particular restaurant    
 Params    id
 Access    Public
 Method    GET  
@@ -40,7 +40,7 @@ Method    GET
 Router.get("/r/:category", async (req, res) => {
   try {
   
-    
+    await Validatecategory(req.params);  
     const { category } = req.params;
     const foods = await FoodModel.find({
       category: { $regex: category, $options: "i" },

@@ -29,7 +29,7 @@ Router.post("/new", async (req, res) => {
 
 /*
 Route     /delete
-Des       Add new food review/rating
+Des       delete food review/rating
 Params    _id
 BODY      none
 Access    Public

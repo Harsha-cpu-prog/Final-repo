@@ -11,7 +11,9 @@ import { s3Upload } from "../../Utils/AWS/s3";
 
 const Router = express.Router();
 
-// Multer Config
+
+
+// // Multer Config
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -24,6 +26,8 @@ Method    GET
 */
 Router.get("/:_id", async (req, res) => {
   try {
+
+      await ValidateImageId(req.params);
     const image = await ImageModel.findById(req.params._id);
 
     return res.json({ image });
@@ -43,9 +47,9 @@ Router.post("/", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
 
-    // s3 bucket options
-    const bucketOptions = {
-      Bucket: "shapeaijunebatch123",
+  // s3 bucket options 
+  const bucketOptions={
+    Bucket: "shapeaijunebatch123",
       Key: file.originalname,
       Body: file.buffer,
       ContentType: file.mimetype,
